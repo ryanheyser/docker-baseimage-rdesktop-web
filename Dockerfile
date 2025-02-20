@@ -102,7 +102,7 @@ RUN \
  npm install 
 
 # runtime stage
-FROM ghcr.io/linuxserver/baseimage-rdesktop:focal
+FROM ghcr.io/linuxserver/baseimage-rdesktop:ubuntunoble
 
 # set version label
 ARG BUILD_DATE
