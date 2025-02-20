@@ -52,7 +52,7 @@ RUN \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
- export PREFIX=/usr && \
+ export PREFIX=/usr/local && \
  checkinstall \
 	-y \
 	-D \
