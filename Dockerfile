@@ -144,7 +144,7 @@ RUN \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
  curl -o \
  /usr/bin/websocat -fL \
-	"https://github.com/vi/websocat/releases/download/${WEBSOCAT_RELEASE}/websocat.x86_64-unknown-linux-musl" && \
+	"https://github.com/vi/websocat/releases/download/${WEBSOCAT_RELEASE}/websocat_max.x86_64-unknown-linux-musl" && \
  chmod +x /usr/bin/websocat && \
  echo "**** cleanup ****" && \
  apt-get autoclean && \
