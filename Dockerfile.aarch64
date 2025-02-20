@@ -21,7 +21,6 @@ RUN \
 	libavutil-dev \
 	libcairo2-dev \
 	libjpeg-turbo8-dev \
-	libjpeg62-dev \
 	libogg-dev \
 	libossp-uuid-dev \
 	libpango1.0-dev \
