@@ -2,7 +2,7 @@ name: Build Scheduler
 
 on:
   schedule:
-    - cron:  '11 6 * * 2'
+    - cron:  '0 2 * * *'
   workflow_dispatch:
 
 env:
@@ -54,7 +54,14 @@ jobs:
         uses: docker/metadata-action@v5.6.1
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-      
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=sha
+            type=schedule,pattern=nightly
+
       - name: Build and Push Docker image
         id: push
         uses: docker/build-push-action@v6
