@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:noble as builder
+FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS builder
 
 ARG GUACD_VERSION=1.5.5
 ARG NODE_VERSION=18
@@ -67,7 +67,7 @@ RUN \
 	/tmp/out/guacd_${GUACD_VERSION}.deb
 
 # nodejs builder
-FROM ghcr.io/linuxserver/baseimage-ubuntu:noble as nodebuilder
+FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS nodebuilder
 ARG GCLIENT_RELEASE
 ARG GCLIENT_VERSION=1.2.0
 ARG NODE_VERSION=18
