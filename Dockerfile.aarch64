@@ -45,10 +45,10 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr && \
+ ./configure --prefix=/usr/local && \
  make && \
  mkdir -p /tmp/out && \
- /usr/bin/list-dependencies.sh \
+ /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
