@@ -1,6 +1,7 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-focal as builder
+FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-noble as builder
 
 ARG GUACD_VERSION=1.1.0
+ARG NODE_VERSION=14
 
 COPY /buildroot /
 
@@ -59,17 +60,18 @@ RUN \
 	/tmp/out/guacd_${GUACD_VERSION}.deb
 
 # nodejs builder
-FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-focal as nodebuilder
+FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-noble as nodebuilder
 ARG GCLIENT_RELEASE
+ARG NODE_VERSION=14
 
 RUN \
  echo "**** install build deps ****" && \
  apt-get update && \
  apt-get install -y \
 	gnupg && \
- curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
- echo 'deb https://deb.nodesource.com/node_14.x focal main' \
-	> /etc/apt/sources.list.d/nodesource.list && \
+ curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg && \
+ chmod 644 /usr/share/keyrings/nodesource.gpg && \
+ echo "deb [arch=arm64 signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_VERSION} nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
  apt-get update && \
  apt-get install -y \
 	g++ \
@@ -94,14 +96,15 @@ RUN \
  npm install 
 
 # runtime stage
-FROM ghcr.io/linuxserver/baseimage-rdesktop:arm64v8-focal
+FROM ghcr.io/linuxserver/baseimage-rdesktop:arm64v8-noble
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
 ARG GUACD_VERSION=1.1.0
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="thelamer"
+ARG NODE_VERSION=14
+LABEL build_version="ryanheyser version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL maintainer="ryanheyser"
 
 # Copy build outputs
 COPY --from=builder /tmp/out /tmp/out
@@ -115,9 +118,9 @@ RUN \
  apt-get update && \
  apt-get install -y \
 	gnupg && \
- curl -s https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add - && \
- echo 'deb https://deb.nodesource.com/node_14.x focal main' \
-        > /etc/apt/sources.list.d/nodesource.list && \
+ curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /usr/share/keyrings/nodesource.gpg && \
+ chmod 644 /usr/share/keyrings/nodesource.gpg && \
+ echo "deb [arch=arm64 signed-by=/usr/share/keyrings/nodesource.gpg] https://deb.nodesource.com/node_${NODE_VERSION} nodistro main" | tee /etc/apt/sources.list.d/nodesource.list && \
  apt-get update && \
  DEBIAN_FRONTEND=noninteractive \
  apt-get install --no-install-recommends -y \
