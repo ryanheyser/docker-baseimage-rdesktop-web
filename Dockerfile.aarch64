@@ -1,7 +1,7 @@
 FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-noble as builder
 
-ARG GUACD_VERSION=1.1.0
-ARG NODE_VERSION=14
+ARG GUACD_VERSION=1.5.5
+ARG NODE_VERSION=18
 
 COPY /buildroot /
 
@@ -62,7 +62,8 @@ RUN \
 # nodejs builder
 FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-noble as nodebuilder
 ARG GCLIENT_RELEASE
-ARG NODE_VERSION=14
+ARG GCLIENT_VERSION=1.2.0
+ARG NODE_VERSION=18
 
 RUN \
  echo "**** install build deps ****" && \
@@ -85,7 +86,7 @@ RUN \
  mkdir -p /gclient && \
  curl -o \
  /tmp/gclient.tar.gz -L \
-	"https://github.com/linuxserver/gclient/archive/1.1.2.tar.gz" && \
+	"https://github.com/linuxserver/gclient/archive/${GCLIENT_VERSION}.tar.gz" && \
  tar xf \
  /tmp/gclient.tar.gz -C \
 	/gclient/ --strip-components=1
@@ -101,8 +102,8 @@ FROM ghcr.io/linuxserver/baseimage-rdesktop:arm64v8-noble
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-ARG GUACD_VERSION=1.1.0
-ARG NODE_VERSION=14
+ARG GUACD_VERSION=1.5.5
+ARG NODE_VERSION=18
 LABEL build_version="ryanheyser version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="ryanheyser"
 
