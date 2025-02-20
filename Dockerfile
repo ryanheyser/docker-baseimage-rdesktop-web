@@ -45,8 +45,8 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr --with-init-dir=/etc/init.d && \
- make -j 2 && \
+ ./configure --prefix=/usr && \
+ make && \
  mkdir -p /tmp/out && \
  /usr/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
