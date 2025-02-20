@@ -135,6 +135,7 @@ RUN \
 	nodejs \
 	obconf \
 	openbox \
+	python-is-python3 \
 	python3 \
 	xterm && \
  apt-get install -qy --no-install-recommends \
