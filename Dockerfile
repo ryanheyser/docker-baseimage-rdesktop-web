@@ -17,18 +17,25 @@ RUN \
 	gcc \
 	git \
 	libavcodec-dev \
+	libavformat-dev \
 	libavutil-dev \
 	libcairo2-dev \
 	libjpeg-turbo8-dev \
+	libjpeg62-dev \
 	libogg-dev \
 	libossp-uuid-dev \
+	libpango1.0-dev \
+	libpng-dev \
 	libpulse-dev \
+	libssh2-1-dev \
 	libssl-dev \
 	libswscale-dev \
-	libtool \
+	libtool-bin \
+	libvncserver-dev \
 	libvorbis-dev \
 	libwebsockets-dev \
 	libwebp-dev \
+	uuid-dev \
 	make
 
 RUN \
@@ -39,7 +46,7 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr && \
+ ./configure --prefix=/usr --with-init-dir=/etc/init.d && \
  make -j 2 && \
  mkdir -p /tmp/out && \
  /usr/bin/list-dependencies.sh \
