@@ -52,7 +52,8 @@ RUN \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
- PREFIX=/usr checkinstall \
+ export PREFIX=/usr && \
+ checkinstall \
 	-y \
 	-D \
 	--nodoc \
