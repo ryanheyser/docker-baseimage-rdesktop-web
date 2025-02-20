@@ -19,14 +19,12 @@ jobs:
         platform:
           - linux/amd64
           - linux/arm64
-          - linux/armhf
         include:
           - platform: "linux/amd64"
             dockerfile: "Dockerfile"
           - platform: "linux/arm64"
             dockerfile: "Dockerfile.aarch64"
-          - platform: "linux/armhf"
-            dockerfile: "Dockerfile.armhf"
+
     permissions:
       contents: read
       packages: write
