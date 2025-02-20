@@ -135,7 +135,7 @@ RUN \
 	nodejs \
 	obconf \
 	openbox \
-	python \
+	python3 \
 	xterm && \
  apt-get install -qy --no-install-recommends \
 	$(cat /tmp/out/DEPENDENCIES) && \
