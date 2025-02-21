@@ -6,7 +6,7 @@ ARG NODE_VERSION=18
 COPY /buildroot /
 
 RUN \
- export DEBIAN_FRONTEND="noninteractive" $$ \
+ export DEBIAN_FRONTEND="noninteractive" && \
  echo "**** install build deps ****" && \
  apt-get update && \
  apt-get install -qy --no-install-recommends \
@@ -74,7 +74,7 @@ ARG GCLIENT_VERSION=1.2.0
 ARG NODE_VERSION=18
 
 RUN \
- export DEBIAN_FRONTEND="noninteractive" $$ \
+ export DEBIAN_FRONTEND="noninteractive" && \
  echo "**** install build deps ****" && \
  apt-get update && \
  apt-get install -y \
@@ -119,7 +119,7 @@ COPY --from=builder /tmp/out /tmp/out
 COPY --from=nodebuilder /gclient /gclient
 
 RUN \
- export DEBIAN_FRONTEND="noninteractive" $$ \
+ export DEBIAN_FRONTEND="noninteractive" && \
  echo "**** install guacd ****" && \
  dpkg --path-include=/usr/share/doc/${PKG_NAME}/* \
         -i /tmp/out/guacd_${GUACD_VERSION}.deb && \
