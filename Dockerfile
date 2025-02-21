@@ -132,6 +132,7 @@ RUN \
 	libfreerdp2-2 \
 	libfreerdp-client2-2 \
 	libossp-uuid16 \
+	libterm-readline-gnu-perl \
 	nodejs \
 	obconf \
 	openbox \
