@@ -61,8 +61,9 @@ jobs:
             type=sha
             type=schedule,pattern=nightly
             type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=ref,event=branch
+            type=ref,event=tag
             type=ref,event=pr
+            type=ref,event=branch
 
       - name: Build and Push Docker image
         id: push
