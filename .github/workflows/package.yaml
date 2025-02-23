@@ -88,9 +88,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
           sbom: true
           provenance: true
-          outputs: |
-            type=image,"name=${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}",push-by-digest=true,name-canonical=true,push=true
-            type=registry,push=true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: Export digest
         run: |
