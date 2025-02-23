@@ -18,12 +18,12 @@ jobs:
       matrix:
         platform:
           - linux/amd64
-          # - linux/arm64
+          - linux/arm64
         include:
           - platform: "linux/amd64"
             dockerfile: "Dockerfile"
-          # - platform: "linux/arm64"
-          #   dockerfile: "Dockerfile.aarch64"
+          - platform: "linux/arm64"
+            dockerfile: "Dockerfile.aarch64"
 
     permissions:
       contents: read
