@@ -11,7 +11,7 @@ env:
 
 jobs:
   build-image:
-    runs-on: ubuntu-latest
+    runs-on: ${{ matrix.runs-on }}
 
     strategy:
       fail-fast: false
@@ -22,8 +22,10 @@ jobs:
         include:
           - platform: "linux/amd64"
             dockerfile: "Dockerfile"
+            runs-on: ubuntu-24.04
           - platform: "linux/arm64"
             dockerfile: "Dockerfile.aarch64"
+            runs-on: ubuntu-24.04-arm
 
     permissions:
       contents: read
