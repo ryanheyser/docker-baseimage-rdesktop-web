@@ -1,7 +1,7 @@
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS builder
 
 ARG GUACD_VERSION=1.5.5
-ARG NODE_VERSION=18
+ARG NODE_VERSION=23
 
 COPY /buildroot /
 
@@ -70,8 +70,8 @@ RUN \
 # nodejs builder
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS nodebuilder
 ARG GCLIENT_RELEASE
-ARG GCLIENT_VERSION=1.3.1
-ARG NODE_VERSION=18
+ARG GCLIENT_VERSION=1.3.2
+ARG NODE_VERSION=23
 
 RUN \
  export DEBIAN_FRONTEND="noninteractive" && \
