@@ -70,7 +70,7 @@ RUN \
 # nodejs builder
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS nodebuilder
 ARG GCLIENT_RELEASE
-ARG GCLIENT_VERSION=1.3.0
+ARG GCLIENT_VERSION=1.3.1
 ARG NODE_VERSION=18
 
 RUN \
