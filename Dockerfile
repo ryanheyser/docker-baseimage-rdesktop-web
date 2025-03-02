@@ -101,7 +101,13 @@ RUN \
 RUN \
  echo "**** install node modules ****" && \
  cd /gclient && \
- npm install 
+ npm install && \
+ npm update
+
+RUN \
+ echo "**** determine if node modules are outdated" && \
+ cd /gclient && \
+ npm outdated
 
 # runtime stage
 FROM ghcr.io/linuxserver/baseimage-rdesktop:ubuntunoble
