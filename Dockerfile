@@ -116,7 +116,7 @@ FROM ghcr.io/linuxserver/baseimage-rdesktop:ubuntunoble
 ARG BUILD_DATE
 ARG VERSION
 ARG GUACD_VERSION=1.5.5
-ARG NODE_VERSION=18
+ARG NODE_VERSION=23
 LABEL build_version="ryanheyser version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="ryanheyser"
 
