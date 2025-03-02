@@ -1,7 +1,7 @@
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS builder
 
 ARG GUACD_VERSION=1.5.5
-ARG NODE_VERSION=23
+ARG NODE_VERSION=21
 
 COPY /buildroot /
 
@@ -71,7 +71,7 @@ RUN \
 FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS nodebuilder
 ARG GCLIENT_RELEASE
 ARG GCLIENT_VERSION=1.3.2
-ARG NODE_VERSION=23
+ARG NODE_VERSION=21
 
 RUN \
  export DEBIAN_FRONTEND="noninteractive" && \
@@ -116,7 +116,7 @@ FROM ghcr.io/linuxserver/baseimage-rdesktop:ubuntunoble
 ARG BUILD_DATE
 ARG VERSION
 ARG GUACD_VERSION=1.5.5
-ARG NODE_VERSION=23
+ARG NODE_VERSION=21
 LABEL build_version="ryanheyser version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="ryanheyser"
 
