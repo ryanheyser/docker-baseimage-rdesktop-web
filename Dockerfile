@@ -93,7 +93,7 @@ RUN \
  mkdir -p /gclient && \
  curl -o \
  /tmp/gclient.tar.gz -L \
-	"https://github.com/ryanheyser/gclient/archive/${GCLIENT_VERSION}.tar.gz" && \
+	"https://github.com/ryanheyser/gclient/archive/v${GCLIENT_VERSION}.tar.gz" && \
  tar xf \
  /tmp/gclient.tar.gz -C \
 	/gclient/ --strip-components=1
