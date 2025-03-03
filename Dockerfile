@@ -52,7 +52,7 @@ RUN \
  echo "**** prep build ****" && \
  mkdir /tmp/guacd && \
  git clone https://github.com/apache/guacamole-server.git /tmp/guacd && \
- export PREFIX="/usr/local" && \
+ export PREFIX="/usr" && \
  export CFLAGS="-I${PREFIX}/include" && \
  export LDFLAGS="-L${PREFIX}/lib" && \
  export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig" && \
