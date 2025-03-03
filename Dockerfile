@@ -50,7 +50,7 @@ RUN \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
  ./configure --prefix=/usr && \
- make -j4 && \
+ make && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
