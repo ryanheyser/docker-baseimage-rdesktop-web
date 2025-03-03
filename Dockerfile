@@ -59,6 +59,7 @@ RUN \
  checkinstall \
 	-y \
 	-D \
+	-d 2 \
 	--fstrans=yes \
 	--install=no \
 	--nodoc \
