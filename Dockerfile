@@ -75,7 +75,7 @@ RUN \
  echo "**** guacd dependencies ****" && \
  cat /tmp/out/DEPENDENCIES && \
  echo "**** list lib dir ****" && \
- ls -alR ".libs"  && \
+ ls -alR "/tmp/guacd/src/libguac/"  && \
  echo "**** guacd install ****" && \
  checkinstall \
 	-y \
