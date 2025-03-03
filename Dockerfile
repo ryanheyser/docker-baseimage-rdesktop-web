@@ -66,6 +66,7 @@ RUN \
  echo "**** guacd dependencies ****" && \
  cat /tmp/out/DEPENDENCIES && \
  echo "**** guacd install ****" && \
+ export PREFIX="/usr" && \
  checkinstall \
 	-y \
 	-D \
