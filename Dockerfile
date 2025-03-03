@@ -81,7 +81,7 @@ RUN \
  echo "**** LD_PRELOAD ****" && \
  echo "current: ${LD_PRELOAD}" && \
  echo "**** checkinstall setup ****" && \
- export INSTALLWATCH_PREFIX="/usr/lib/checkinstall" && \
+ export INSTALLWATCH="/usr/lib/checkinstall" && \
  echo "**** guacd install ****" && \
  checkinstall \
 	-y \
