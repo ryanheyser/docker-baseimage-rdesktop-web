@@ -57,9 +57,11 @@ RUN \
  export PREFIX=/usr/local && \
  export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:$LD_LIBRARY_PATH && \
  unset LD_PRELOAD && \
- checkinstall --install=no --fstrans=yes make install \
+ checkinstall \
 	-y \
 	-D \
+	--install=no \
+	--fstrans=yes \
 	--nodoc \
 	--pkgname guacd \
 	--pkgversion "${GUACD_VERSION}" \
