@@ -56,19 +56,18 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr/local && \
+ ./configure --prefix=/usr && \
  make -j4 && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
+ cat /tmp/out/DEPENDENCIES && \
  checkinstall \
 	-y \
 	-D \
 	-d 2 \
-	--fstrans=yes \
-	--install=no \
 	--nodoc \
 	--pkgname guacd \
 	--pkgversion "${GUACD_VERSION}" \
