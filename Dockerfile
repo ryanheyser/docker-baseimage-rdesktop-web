@@ -16,7 +16,7 @@ RUN \
 	autoconf \
 	automake \
 	checkinstall \
-	freerdp2-dev \
+	freerdp3-dev \
 	g++ \
 	gcc \
 	git \
@@ -52,11 +52,16 @@ RUN \
  echo "**** prep build ****" && \
  mkdir /tmp/guacd && \
  git clone https://github.com/apache/guacamole-server.git /tmp/guacd && \
+ export PREFIX="/usr" && \
+ export CFLAGS="-I${PREFIX_DIR}/include" && \
+ export LDFLAGS="-L${PREFIX_DIR}/lib" && \
+ export PKG_CONFIG_PATH="${PREFIX_DIR}/lib/pkgconfig" && \
+ export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=8388608" && \
  echo "**** build guacd ****" && \
  cd /tmp/guacd && \
- git checkout ${GUACD_VERSION} && \
+ git -c advice.detachedHead=false checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr && \
+ ./configure --prefix=${PREFIX} --disable-guaclog && \
  make -j4 && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
@@ -66,7 +71,6 @@ RUN \
  echo "**** guacd dependencies ****" && \
  cat /tmp/out/DEPENDENCIES && \
  echo "**** guacd install ****" && \
- export PREFIX="/usr" && \
  checkinstall \
 	-y \
 	-D \
@@ -135,8 +139,8 @@ RUN \
  DEBIAN_FRONTEND=noninteractive \
  apt-get install --no-install-recommends -y \
 	ca-certificates \
-	libfreerdp2-2 \
-	libfreerdp-client2-2 \
+	libfreerdp3-3 \
+	libfreerdp-client3-3 \
 	libossp-uuid16 \
 	libterm-readline-gnu-perl \
 	nodejs \
