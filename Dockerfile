@@ -63,7 +63,7 @@ RUN \
  cd /tmp/guacd && \
  git -c advice.detachedHead=false checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=${PREFIX}/local --disable-guaclog && \
+ ./configure --prefix=${PREFIX}/local/libguac --disable-guaclog && \
  make -j4 && \
  mkdir -p /tmp/out && \
  echo "**** find /tmp/guac so ****" && \
