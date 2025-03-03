@@ -49,7 +49,7 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr && \
+ ./configure --prefix=/usr/local && \
  make && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
@@ -66,7 +66,7 @@ RUN \
 	--pkgname guacd \
 	--pkgversion "${GUACD_VERSION}" \
 	--pakdir /tmp \
-	--exclude "/usr/share/man","/usr/include","/etc" && \
+	--exclude "/usr/share/man","/usr/local/share/man","/usr/include","/usr/local/include","/etc" && \
  mv \
 	/tmp/guacd_${GUACD_VERSION}-*.deb \
 	/tmp/out/guacd_${GUACD_VERSION}.deb
