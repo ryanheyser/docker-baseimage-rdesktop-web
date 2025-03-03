@@ -66,10 +66,10 @@ RUN \
  ./configure --prefix=${PREFIX} --disable-guaclog && \
  make -j4 && \
  mkdir -p /tmp/out && \
- ls -alR "/tmp/guacd/src/guacd" && \
+ find /tmp/guacd | grep "so$" && \
+ find ${PREFIX} | grep "*guac*.so$" && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
-	"/tmp/guacd/src/guacd/sbin/guacd" \
 	"/tmp/guacd/src/guacd/lib/libguac-client-*.so" \
 	${FREERDP_LIB_PATH}/*guac*.so \
 	$(find /tmp/guacd | grep "so$") \
