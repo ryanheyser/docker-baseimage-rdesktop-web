@@ -83,7 +83,9 @@ RUN \
  echo "current: ${LD_PRELOAD}" && \
  if [ ! $(find "${PREFIX}" | grep -E "installwatch.so$") ]; \ 
 	then export LD_PRELOAD=$(find "/usr" | grep -E "installwatch.so$" ); \
+	export LD_LIBRARY_PATH="${LD_PRELOAD}:${LD_LIBRARY_PATH}"; \
 	echo "replace: ${LD_PRELOAD}"; \
+	echo "LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}"; \ 
  fi && \
  checkinstall \
 	-y \
