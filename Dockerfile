@@ -63,7 +63,9 @@ RUN \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
+ echo "**** guacd dependencies ****" && \
  cat /tmp/out/DEPENDENCIES && \
+ echo "**** guacd install ****" && \
  checkinstall \
 	-y \
 	-D \
