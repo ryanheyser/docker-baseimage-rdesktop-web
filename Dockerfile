@@ -68,6 +68,8 @@ RUN \
  mkdir -p /tmp/out && \
  echo "**** find /tmp/guac so ****" && \
  find /tmp/guacd | grep -E 'so$' && \
+ echo "**** find installwatch.so ****" && \
+ find /usr | grep -E 'installwatch.so$' && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep -E 'so$') \
