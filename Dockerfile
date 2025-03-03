@@ -2,6 +2,7 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS builder
 
 ARG GUACD_VERSION=1.5.5
 ARG NODE_VERSION=21
+ARG FREERDP_VERSION=3
 
 COPY /buildroot /
 
@@ -57,6 +58,7 @@ RUN \
  export LDFLAGS="-L${PREFIX}/lib" && \
  export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig" && \
  export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=8388608" && \
+ export FREERDP_LIB_PATH=${PREFIX}/lib/freerdp${FREERDP_VERSION} && \
  echo "**** build guacd ****" && \
  cd /tmp/guacd && \
  git -c advice.detachedHead=false checkout ${GUACD_VERSION} && \
@@ -66,6 +68,9 @@ RUN \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
+	"/tmp/guacd/src/guacd/sbin/guacd" \
+	"/tmp/guacd/src/guacd/lib/libguac-client-*.so" \
+	${FREERDP_LIB_PATH}/*guac*.so \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
  echo "**** guacd dependencies ****" && \
