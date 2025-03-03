@@ -68,8 +68,8 @@ RUN \
  mkdir -p /tmp/out && \
  echo "**** find /tmp/guac so ****" && \
  find /tmp/guacd | grep -E 'so$' && \
- echo "**** find ${PREFIX} guac so ****" && \
- find "${PREFIX}" | grep -E 'guac.*so$' && \
+ echo "**** find ${PREFIX} so ****" && \
+ find "${PREFIX}" | grep -E 'so$' && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep -E 'so$') \
