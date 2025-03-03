@@ -49,7 +49,6 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- autoupdate && \
  ./configure --prefix=/usr/local && \
  make -j4 && \
  mkdir -p /tmp/out && \
