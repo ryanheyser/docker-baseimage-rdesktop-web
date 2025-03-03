@@ -2,7 +2,7 @@ FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS builder
 
 ARG GUACD_VERSION=1.5.5
 ARG NODE_VERSION=21
-ARG FREERDP_VERSION=3
+ARG FREERDP_VERSION=2
 
 COPY /buildroot /
 
@@ -17,7 +17,7 @@ RUN \
 	autoconf \
 	automake \
 	checkinstall \
-	freerdp3-dev \
+	freerdp2-dev \
 	g++ \
 	gcc \
 	git \
@@ -144,8 +144,8 @@ RUN \
  DEBIAN_FRONTEND=noninteractive \
  apt-get install --no-install-recommends -y \
 	ca-certificates \
-	libfreerdp3-3 \
-	libfreerdp-client3-3 \
+	libfreerdp2-2 \
+	libfreerdp-client2-2 \
 	libossp-uuid16 \
 	libterm-readline-gnu-perl \
 	nodejs \
