@@ -53,7 +53,7 @@ RUN \
  echo "**** prep build ****" && \
  mkdir /tmp/guacd && \
  git clone https://github.com/apache/guacamole-server.git /tmp/guacd && \
- export PREFIX="/usr/local" && \
+ export PREFIX="/usr" && \
  export CFLAGS="-I${PREFIX}/include -I/usr/include" && \
  export LDFLAGS="-L${PREFIX}/lib -L/usr/lib" && \
  export PKG_CONFIG_PATH="/usr/lib/pkgconfig" && \
@@ -63,7 +63,7 @@ RUN \
  cd /tmp/guacd && \
  git -c advice.detachedHead=false checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=${PREFIX} --disable-guaclog && \
+ ./configure --prefix=${PREFIX}/local --disable-guaclog && \
  make -j4 && \
  mkdir -p /tmp/out && \
  echo "**** find /tmp/guac so ****" && \
