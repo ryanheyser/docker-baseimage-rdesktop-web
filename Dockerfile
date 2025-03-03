@@ -55,6 +55,7 @@ RUN \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
  export PREFIX=/usr/local && \
+ export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:$LD_LIBRARY_PATH && \
  checkinstall \
 	-y \
 	-D \
