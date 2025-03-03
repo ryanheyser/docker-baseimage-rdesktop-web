@@ -9,6 +9,8 @@ RUN \
  export DEBIAN_FRONTEND="noninteractive" && \
  echo "**** install build deps ****" && \
  apt-get update && \
+ apt-get install -qy gnupg && \
+ curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
  apt-get install -qy --no-install-recommends \
 	autoconf \
 	automake \
@@ -24,6 +26,7 @@ RUN \
 	libjpeg-turbo8-dev \
 	libogg-dev \
 	libossp-uuid-dev \
+	libpam0g-dev
 	libpango1.0-dev \
 	libpng-dev \
 	libpulse-dev \
@@ -38,8 +41,11 @@ RUN \
 	libwebp-dev \
 	make \
 	nasm \
+	nodejs \
 	pkgconf \
 	uuid-dev
+
+FROM builder AS guacbuilder
 
 RUN \
  echo "**** prep build ****" && \
@@ -73,25 +79,10 @@ RUN \
 	/tmp/out/guacd_${GUACD_VERSION}.deb
 
 # nodejs builder
-FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS nodebuilder
+FROM builder AS nodebuilder
 ARG GCLIENT_RELEASE
 ARG GCLIENT_VERSION=1.3.2
 ARG NODE_VERSION=21
-
-RUN \
- export DEBIAN_FRONTEND="noninteractive" && \
- echo "**** install build deps ****" && \
- apt-get update && \
- apt-get install -y \
-	gnupg && \
- curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
- apt-get update && \
- apt-get install -y \
-	g++ \
-	gcc \
-	libpam0g-dev \
-	make \
-	nodejs
 
 RUN \
  echo "**** grab source ****" && \
@@ -126,7 +117,7 @@ LABEL build_version="ryanheyser version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="ryanheyser"
 
 # Copy build outputs
-COPY --from=builder /tmp/out /tmp/out
+COPY --from=guacbuilder /tmp/out /tmp/out
 COPY --from=nodebuilder /gclient /gclient
 
 RUN \
