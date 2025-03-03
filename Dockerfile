@@ -57,13 +57,12 @@ RUN \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
  ./configure --prefix=/usr/local && \
- make && \
+ make -j4 && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
- make && \
  checkinstall \
 	-y \
 	-D \
@@ -83,7 +82,6 @@ RUN \
 FROM builder AS nodebuilder
 ARG GCLIENT_RELEASE
 ARG GCLIENT_VERSION=1.3.2
-ARG NODE_VERSION=21
 
 RUN \
  echo "**** grab source ****" && \
