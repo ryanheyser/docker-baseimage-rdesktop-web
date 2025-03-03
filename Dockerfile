@@ -47,16 +47,14 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr/local && \
+ ./configure --prefix=/usr && \
  make -j4 && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
- export PREFIX=/usr/local && \
- export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:$LD_LIBRARY_PATH && \
- unset LD_PRELOAD && \
+ export PREFIX=/usr && \
  checkinstall \
 	-y \
 	-D \
