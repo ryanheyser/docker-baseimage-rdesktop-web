@@ -81,7 +81,7 @@ RUN \
  echo "**** guacd install ****" && \
  echo "**** LD_PRELOAD ****" && \
  echo "current: ${LD_PRELOAD}" && \
- if [[ ! $(find "${PREFIX}" | grep -E "installwatch.so$") ]]; \ 
+ if [ ! $(find "${PREFIX}" | grep -E "installwatch.so$") ]; \ 
 	then export LD_PRELOAD=$(find "/usr" | grep -E "installwatch.so$" ); \
 	echo "replace: ${LD_PRELOAD}"; \
  fi && \
