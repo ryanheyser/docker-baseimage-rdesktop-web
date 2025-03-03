@@ -59,7 +59,6 @@ RUN \
  checkinstall \
 	-y \
 	-D \
-	--install=no \
 	--fstrans=yes \
 	--nodoc \
 	--pkgname guacd \
