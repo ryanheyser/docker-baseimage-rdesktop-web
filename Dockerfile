@@ -63,7 +63,7 @@ RUN \
  cd /tmp/guacd && \
  git -c advice.detachedHead=false checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=${PREFIX}/local/libguac --disable-guaclog && \
+ ./configure --prefix=${PREFIX}/local --disable-guaclog && \
  make -j4 && \
  mkdir -p /tmp/out && \
  echo "**** find /tmp/guac so ****" && \
@@ -78,9 +78,9 @@ RUN \
  cat /tmp/out/DEPENDENCIES && \
  echo "**** list lib dir ****" && \
  ls -alR "/tmp/guacd/src/libguac/"  && \
- echo "**** guacd install ****" && \
  echo "**** LD_PRELOAD ****" && \
  echo "current: ${LD_PRELOAD}" && \
+ echo "**** guacd install ****" && \
  if [ ! $(find "${PREFIX}" | grep -E "installwatch.so$") ]; \ 
 	then export LD_PRELOAD=$(find "/usr" | grep -E "installwatch.so$" ); \
 	export LD_LIBRARY_PATH="$(dirname ${LD_PRELOAD}):${LD_LIBRARY_PATH}"; \
@@ -92,9 +92,10 @@ RUN \
 	-D \
 	-d 2 \
 	--install=no \
-	--fstrans=yes \
+	--fstrans=no \
 	--nodoc \
 	--pkgname guacd \
+	--pkggroup guacd \
 	--pkgversion "${GUACD_VERSION}" \
 	--pakdir /tmp \
 	--exclude "/usr/share/man","/usr/local/share/man","/usr/include","/usr/local/include","/etc" && \
