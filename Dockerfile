@@ -36,8 +36,10 @@ RUN \
 	libvorbis-dev \
 	libwebsockets-dev \
 	libwebp-dev \
-	uuid-dev \
-	make
+	make \
+	nasm \
+	pkgconf \
+	uuid-dev
 
 RUN \
  echo "**** prep build ****" && \
