@@ -47,14 +47,13 @@ RUN \
  cd /tmp/guacd && \
  git checkout ${GUACD_VERSION} && \
  autoreconf -fi && \
- ./configure --prefix=/usr && \
+ ./configure --prefix=/usr/local && \
  make -j4 && \
  mkdir -p /tmp/out && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
- export PREFIX=/usr && \
  checkinstall \
 	-y \
 	-D \
