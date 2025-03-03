@@ -67,12 +67,13 @@ RUN \
  make -j4 && \
  mkdir -p /tmp/out && \
  echo "**** find /tmp/guac so ****" && \
- find /tmp/guacd | grep "so$" && \
+ find /tmp/guacd | grep -E 'so$' && \
  echo "**** find ${PREFIX} *guac*.so ****" && \
- find ${PREFIX} | grep "*guac*.so$" && \
+ find ${PREFIX} | grep -E 'guac.*.so$' && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
-	$(find /tmp/guacd | grep "so$") \
+	$(find /tmp/guacd | grep -E 'so$') \
+	$(find ${PREFIX} | grep -E 'guac.*\.so$') \
 	> /tmp/out/DEPENDENCIES && \
  echo "**** guacd dependencies ****" && \
  cat /tmp/out/DEPENDENCIES && \
