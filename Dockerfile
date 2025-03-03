@@ -66,6 +66,7 @@ RUN \
  ./configure --prefix=${PREFIX} --disable-guaclog && \
  make -j4 && \
  mkdir -p /tmp/out && \
+ ls -alR "/tmp/guacd/src/guacd" && \
  /usr/local/bin/list-dependencies.sh \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	"/tmp/guacd/src/guacd/sbin/guacd" \
