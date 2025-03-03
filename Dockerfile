@@ -57,7 +57,7 @@ RUN \
  export PREFIX=/usr/local && \
  export LD_LIBRARY_PATH=/usr/lib:/usr/lib64:$LD_LIBRARY_PATH && \
  unset LD_PRELOAD && \
- checkinstall \
+ checkinstall --install=no --fstrans=yes make install \
 	-y \
 	-D \
 	--nodoc \
