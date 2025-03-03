@@ -30,6 +30,7 @@ RUN \
 	libssh2-1-dev \
 	libssl-dev \
 	libswscale-dev \
+  libtool \
 	libtool-bin \
 	libvncserver-dev \
 	libvorbis-dev \
