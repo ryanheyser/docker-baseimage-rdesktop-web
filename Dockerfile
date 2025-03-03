@@ -53,10 +53,10 @@ RUN \
  echo "**** prep build ****" && \
  mkdir /tmp/guacd && \
  git clone https://github.com/apache/guacamole-server.git /tmp/guacd && \
- export PREFIX="/usr" && \
- export CFLAGS="-I${PREFIX}/include" && \
- export LDFLAGS="-L${PREFIX}/lib" && \
- export PKG_CONFIG_PATH="${PREFIX}/lib/pkgconfig" && \
+ export PREFIX="/usr/local" && \
+ export CFLAGS="-I${PREFIX}/include -I/usr/include" && \
+ export LDFLAGS="-L${PREFIX}/lib -L/usr/lib" && \
+ export PKG_CONFIG_PATH="/usr/lib/pkgconfig" && \
  export LDFLAGS="$LDFLAGS -Wl,-z,stack-size=8388608" && \
  export FREERDP_LIB_PATH=${PREFIX}/lib/freerdp${FREERDP_VERSION} && \
  echo "**** build guacd ****" && \
