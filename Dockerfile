@@ -53,7 +53,7 @@ RUN \
  echo "**** prep build ****" && \
  mkdir /tmp/guacd && \
  git clone https://github.com/apache/guacamole-server.git /tmp/guacd && \
- export PREFIX="/usr" && \
+ export PREFIX="/usr/local" && \
  export CFLAGS="-I${PREFIX}/include -I/usr/include" && \
  export LDFLAGS="-L${PREFIX}/lib -L/usr/lib" && \
  export PKG_CONFIG_PATH="/usr/lib/pkgconfig" && \
@@ -80,13 +80,9 @@ RUN \
  ls -alR "/tmp/guacd/src/libguac/"  && \
  echo "**** LD_PRELOAD ****" && \
  echo "current: ${LD_PRELOAD}" && \
+ echo "**** checkinstall setup ****" && \
+ export INSTALLWATCH_PREFIX="/usr/lib/checkinstall" && \
  echo "**** guacd install ****" && \
- if [ ! $(find "${PREFIX}" | grep -E "installwatch.so$") ]; \ 
-	then export LD_PRELOAD=$(find "/usr" | grep -E "installwatch.so$" ); \
-	export LD_LIBRARY_PATH="$(dirname ${LD_PRELOAD}):${LD_LIBRARY_PATH}"; \
-	echo "replace: ${LD_PRELOAD}"; \
-	echo "LD_LIBRARY_PATH: ${LD_LIBRARY_PATH}"; \ 
- fi && \
  checkinstall \
 	-y \
 	-D \
@@ -95,7 +91,6 @@ RUN \
 	--fstrans=no \
 	--nodoc \
 	--pkgname guacd \
-	--pkggroup guacd \
 	--pkgversion "${GUACD_VERSION}" \
 	--pakdir /tmp \
 	--exclude "/usr/share/man","/usr/local/share/man","/usr/include","/usr/local/include","/etc" && \
