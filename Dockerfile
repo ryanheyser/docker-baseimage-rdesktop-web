@@ -59,7 +59,6 @@ RUN \
  checkinstall \
 	-y \
 	-D \
-	--fstrans=yes \
 	--nodoc \
 	--pkgname guacd \
 	--pkgversion "${GUACD_VERSION}" \
