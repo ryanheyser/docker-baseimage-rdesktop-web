@@ -11,6 +11,7 @@ RUN \
  apt-get update && \
  apt-get install -qy gnupg && \
  curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
+ apt-get update && \
  apt-get install -qy --no-install-recommends \
 	autoconf \
 	automake \
