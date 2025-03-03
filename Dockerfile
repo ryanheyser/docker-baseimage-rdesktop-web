@@ -91,6 +91,8 @@ RUN \
 	-y \
 	-D \
 	-d 2 \
+	--install=no \
+	--fstrans=yes \
 	--nodoc \
 	--pkgname guacd \
 	--pkgversion "${GUACD_VERSION}" \
