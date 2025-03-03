@@ -63,7 +63,6 @@ RUN \
 	--pakdir /tmp \
 	--exclude "/usr/share/man","/usr/include","/etc" \
   --include "/usr/lib","/usr/lib64" && \
- mkdir -p /tmp/out && \
  mv \
 	/tmp/guacd_${GUACD_VERSION}-*.deb \
 	/tmp/out/guacd_${GUACD_VERSION}.deb
