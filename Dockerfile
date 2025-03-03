@@ -56,6 +56,7 @@ RUN \
 	"/tmp/guacd/src/guacd/.libs/guacd" \
 	$(find /tmp/guacd | grep "so$") \
 	> /tmp/out/DEPENDENCIES && \
+ make && \
  checkinstall \
 	-y \
 	-D \
