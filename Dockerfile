@@ -27,7 +27,7 @@ RUN \
 	libjpeg-turbo8-dev \
 	libogg-dev \
 	libossp-uuid-dev \
-	libpam0g-dev
+	libpam0g-dev \
 	libpango1.0-dev \
 	libpng-dev \
 	libpulse-dev \
