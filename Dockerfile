@@ -64,8 +64,7 @@ RUN \
 	--pkgname guacd \
 	--pkgversion "${GUACD_VERSION}" \
 	--pakdir /tmp \
-	--exclude "/usr/share/man","/usr/include","/etc" \
-	--include "/usr/lib","/usr/lib64" && \
+	--exclude "/usr/share/man","/usr/include","/etc" && \
  mv \
 	/tmp/guacd_${GUACD_VERSION}-*.deb \
 	/tmp/out/guacd_${GUACD_VERSION}.deb
