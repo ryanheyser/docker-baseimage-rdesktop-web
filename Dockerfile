@@ -178,7 +178,8 @@ RUN \
  rm -rf \
         /var/lib/apt/lists/* \
         /var/tmp/* \
-        /tmp/*
+        /tmp/* && \
+ ldconfig
 
 # add local files
 COPY /root /
