@@ -143,8 +143,8 @@ COPY --from=nodebuilder /gclient /gclient
 RUN \
  export DEBIAN_FRONTEND="noninteractive" && \
  echo "**** install guacd ****" && \
- dpkg --path-include=/usr/share/doc/${PKG_NAME}/* \
-        -i /tmp/out/guacd_${GUACD_VERSION}.deb && \
+ dpkg -i /tmp/out/guacd_${GUACD_VERSION}.deb && \
+ dpkg -L guacd && \
  echo "**** install packages ****" && \
  apt-get update && \
  apt-get install -y \
