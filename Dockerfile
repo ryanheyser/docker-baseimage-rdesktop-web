@@ -96,7 +96,8 @@ RUN \
 	--exclude "/usr/share/man","/usr/local/share/man","/usr/include","/usr/local/include","/etc" && \
  mv \
 	/tmp/guacd_${GUACD_VERSION}-*.deb \
-	/tmp/out/guacd_${GUACD_VERSION}.deb
+	/tmp/out/guacd_${GUACD_VERSION}.deb && \
+ dpkg-deb -c /tmp/out/guacd_${GUACD_VERSION}.deb
 
 # nodejs builder
 FROM builder AS nodebuilder
