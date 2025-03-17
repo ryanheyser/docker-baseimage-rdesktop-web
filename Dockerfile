@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:noble AS builder
+FROM ghcr.io/linuxserver/baseimage-ubuntu:noble@sha256:49807533be7accb2ce7d457ec9587201a31ec699514b351017118bebd7b15013 AS builder
 
 ARG GUACD_VERSION=1.5.5
 ARG NODE_VERSION=21
@@ -126,7 +126,7 @@ RUN \
  npm outdated
 
 # runtime stage
-FROM ghcr.io/linuxserver/baseimage-rdesktop:ubuntunoble
+FROM ghcr.io/linuxserver/baseimage-rdesktop:ubuntunoble@sha256:adb0218705844e8396236ccc53ed59fd8ef5526e3040043ba6db6da4b5786bfb
 
 # set version label
 ARG BUILD_DATE
