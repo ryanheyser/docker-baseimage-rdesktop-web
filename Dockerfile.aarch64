@@ -102,7 +102,7 @@ RUN \
 # nodejs builder
 FROM builder AS nodebuilder
 ARG GCLIENT_RELEASE
-ARG GCLIENT_VERSION=1.3.5
+ARG GCLIENT_VERSION=1.3.6
 
 RUN \
  echo "**** grab source ****" && \
