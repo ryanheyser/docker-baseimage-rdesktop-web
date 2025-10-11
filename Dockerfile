@@ -166,7 +166,8 @@ RUN \
 	python3 \
 	xterm && \
  apt-get install -qy --no-install-recommends \
-	$(cat /tmp/out/DEPENDENCIES) && \
+	$(cat /tmp/out/DEPENDENCIES)
+RUN \
  echo "**** grab websocat ****" && \
  WEBSOCAT_RELEASE=$(curl -sX GET "https://api.github.com/repos/vi/websocat/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]'); \
